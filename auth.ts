@@ -9,42 +9,42 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        let user = null;
-        user = await fetch("http://localhost:3001/api/auth/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: credentials?.email,
-            password: credentials?.password,
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data) {
-              console.log("Login response data:", data);
-              return {
-                id: data.id,
-                email: data.email,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                referralCode: data.referralCode,
-                accessToken: data.accessToken,
-              };
+        try {
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: credentials?.email,
+                password: credentials?.password,
+              }),
             }
-            return null;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+          );
 
-        if (!user) {
-          throw new Error("Invalid credentials.");
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || "Invalid email or password");
+          }
+
+          const data = await response.json();
+
+          return {
+            id: data.id,
+            email: data.email,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            referralCode: data.referralCode,
+            accessToken: data.accessToken,
+          };
+        } catch (error) {
+          console.error("Login error:", error);
+          throw new Error(
+            error instanceof Error ? error.message : "Invalid credentials."
+          );
         }
-
-        console.log("Authorized user:", user);
-        return user;
       },
     }),
   ],
