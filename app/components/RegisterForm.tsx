@@ -1,15 +1,15 @@
 "use client";
 
-import { AlertCircle, BookOpen, CheckCircle, Lock, Mail } from "lucide-react";
+import { AlertCircle, BookOpen, Gift, Lock, Mail, User } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { login } from "../actions";
+import { register } from "../actions";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isRegistered = searchParams.get("registered") === "true";
+  const urlReferralCode = searchParams.get("referralCode");
 
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -21,17 +21,17 @@ const LoginForm = () => {
 
     try {
       const formData = new FormData(event.currentTarget);
-      const response = await login(formData);
+      const response = await register(formData);
 
-      if (!!response.error) {
+      if (response.error) {
         console.error(response.error);
         setError(response.error.message);
       } else {
-        router.push("/dashboard");
+        router.push("/login?registered=true");
       }
     } catch (e) {
       console.error(e);
-      setError("Check your Credentials");
+      setError("Registration failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -49,19 +49,10 @@ const LoginForm = () => {
               </span>
             </Link>
             <h1 className='text-2xl font-bold text-gray-800 mb-2'>
-              Welcome Back
+              Create Account
             </h1>
-            <p className='text-gray-600'>Sign in to your account to continue</p>
+            <p className='text-gray-600'>Join our community of book lovers</p>
           </div>
-
-          {isRegistered && (
-            <div className='mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3'>
-              <CheckCircle className='w-5 h-5 text-green-500 flex-shrink-0 mt-0.5' />
-              <p className='text-green-700 text-sm'>
-                Registration successful! Please sign in with your credentials.
-              </p>
-            </div>
-          )}
 
           {error && (
             <div className='mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3'>
@@ -70,7 +61,49 @@ const LoginForm = () => {
             </div>
           )}
 
-          <form onSubmit={onSubmit} className='space-y-6'>
+          <form onSubmit={onSubmit} className='space-y-5'>
+            <div className='grid grid-cols-2 gap-4'>
+              <div>
+                <label
+                  htmlFor='firstName'
+                  className='block text-sm font-semibold text-gray-700 mb-2'
+                >
+                  First Name
+                </label>
+                <div className='relative'>
+                  <User className='absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
+                  <input
+                    type='text'
+                    name='firstName'
+                    id='firstName'
+                    required
+                    className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                    placeholder='John'
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor='lastName'
+                  className='block text-sm font-semibold text-gray-700 mb-2'
+                >
+                  Last Name
+                </label>
+                <div className='relative'>
+                  <User className='absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
+                  <input
+                    type='text'
+                    name='lastName'
+                    id='lastName'
+                    required
+                    className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                    placeholder='Doe'
+                  />
+                </div>
+              </div>
+            </div>
+
             <div>
               <label
                 htmlFor='email'
@@ -105,10 +138,43 @@ const LoginForm = () => {
                   name='password'
                   id='password'
                   required
+                  minLength={8}
                   className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
                   placeholder='••••••••'
                 />
               </div>
+              <p className='text-xs text-gray-500 mt-1'>
+                Must be at least 8 characters
+              </p>
+            </div>
+
+            <div>
+              <label
+                htmlFor='referralCode'
+                className='block text-sm font-semibold text-gray-700 mb-2'
+              >
+                Referral Code{" "}
+                {!urlReferralCode && (
+                  <span className='text-gray-500 font-normal'>(Optional)</span>
+                )}
+              </label>
+              <div className='relative'>
+                <Gift className='absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
+                <input
+                  type='text'
+                  name='referralCode'
+                  id='referralCode'
+                  defaultValue={urlReferralCode || ""}
+                  disabled={!!urlReferralCode}
+                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white disabled:bg-gray-100 disabled:cursor-not-allowed'
+                  placeholder='Enter referral code'
+                />
+              </div>
+              <p className='text-xs text-gray-500 mt-1'>
+                {urlReferralCode
+                  ? "Referral code applied from invite link"
+                  : "Have a referral code? Get bonus rewards!"}
+              </p>
             </div>
 
             <button
@@ -116,25 +182,25 @@ const LoginForm = () => {
               disabled={isLoading}
               className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'
             >
-              {isLoading ? "Signing in..." : "Sign In"}
+              {isLoading ? "Creating Account..." : "Create Account"}
             </button>
           </form>
 
           <div className='mt-8 text-center'>
             <p className='text-gray-600'>
-              Don't have an account?{" "}
+              Already have an account?{" "}
               <Link
-                href='/register'
+                href='/login'
                 className='text-[var(--secondary)] hover:text-[var(--secondary-light)] font-semibold transition-colors'
               >
-                Join now
+                Sign in
               </Link>
             </p>
           </div>
 
           <div className='mt-6 pt-6 border-t border-gray-200'>
             <p className='text-xs text-center text-gray-500'>
-              By signing in, you agree to our{" "}
+              By creating an account, you agree to our{" "}
               <Link
                 href='/terms'
                 className='text-[var(--primary)] hover:underline'
@@ -165,4 +231,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
