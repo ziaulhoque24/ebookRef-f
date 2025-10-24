@@ -1,7 +1,5 @@
 import { fetchBooks } from "@/lib/api/books";
 import BooksSection from "./components/Home/BooksSection";
-import Footer from "./components/Home/Footer";
-import Header from "./components/Home/Header";
 import Hero from "./components/Home/Hero";
 
 export const metadata = {
@@ -16,13 +14,9 @@ export default async function Home() {
   const total = booksData?.total ?? 0;
 
   return (
-    <div className='min-h-screen flex flex-col'>
-      <Header />
-      <main className='flex-grow'>
-        <Hero />
-        <BooksSection initialBooks={books} initialTotal={total} />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <BooksSection initialBooks={books} initialTotal={total} />
+    </>
   );
 }
