@@ -49,6 +49,14 @@ export default function DashboardStats({
 
   const stats = [
     {
+      title: "Credits Balance",
+      value: data.credits,
+      icon: Coins,
+      color: "bg-yellow-500",
+      bgLight: "bg-yellow-50",
+      textColor: "text-yellow-600",
+    },
+    {
       title: "Total Referred Users",
       value: data.totalReferredUsers,
       icon: Users,
@@ -71,14 +79,6 @@ export default function DashboardStats({
       color: "bg-purple-500",
       bgLight: "bg-purple-50",
       textColor: "text-purple-600",
-    },
-    {
-      title: "Credits Earned",
-      value: data.credits,
-      icon: Coins,
-      color: "bg-yellow-500",
-      bgLight: "bg-yellow-50",
-      textColor: "text-yellow-600",
     },
   ];
 

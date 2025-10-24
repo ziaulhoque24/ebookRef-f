@@ -79,7 +79,7 @@ export default function BooksSection({
             <button
               onClick={handleSeeMore}
               disabled={isFetching}
-              className='bg-[#F5C542] hover:bg-[#E6B532] text-gray-800 font-semibold px-8 py-3 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
+              className='bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-semibold px-8 py-3 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
             >
               See More Books
             </button>

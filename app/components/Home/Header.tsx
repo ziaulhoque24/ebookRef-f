@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
-import { BookOpen, LayoutDashboard, ShoppingCart } from "lucide-react";
+import { BookOpen, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
+import CartIcon from "../CartIcon";
 import LogoutButton from "../LogoutButton";
 
 export default async function Header() {
@@ -55,16 +56,7 @@ export default async function Header() {
                   <LayoutDashboard className='w-4 h-4' />
                   <span>Dashboard</span>
                 </Link>
-                <Link
-                  href='/cart'
-                  className='relative p-2 rounded-lg hover:bg-gray-100 transition-colors'
-                  title='Shopping Cart'
-                >
-                  <ShoppingCart className='w-6 h-6 text-[var(--secondary)]' />
-                  <span className='absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center'>
-                    0
-                  </span>
-                </Link>
+                <CartIcon />
                 <LogoutButton />
               </>
             ) : (
