@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "Discover curated ebooks across genres. Browse, compare prices, and add favorites to your cart.",
 };
-
+export const dynamic = "force-dynamic";
 export default async function Home() {
   const booksData = await fetchBooks(1, 10);
   const books = booksData?.items ?? [];
