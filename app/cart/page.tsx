@@ -1,15 +1,30 @@
 "use client";
 
 import { clearCart, removeFromCart } from "@/redux/feature/cart/cartSlice";
+import { useCreateOrderMutation } from "@/redux/feature/order/orderApi";
+import { useGetDashboardQuery } from "@/redux/feature/user/userApiSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { ShoppingBag, Trash2, X } from "lucide-react";
+import { Coins, ShoppingBag, Trash2, X } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function CartPage() {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
+  const { data: dashboardData } = useGetDashboardQuery();
+  const [createOrder, { isLoading: isCreatingOrder }] =
+    useCreateOrderMutation();
 
+  const [useCredits, setUseCredits] = useState(false);
+  const [creditsToUse, setCreditsToUse] = useState(0);
+
+  const userCredits = dashboardData?.credits ?? 0;
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
+  const maxCreditsCanUse = Math.min(userCredits, totalPrice);
+
+  const finalPrice = useCredits ? totalPrice - creditsToUse : totalPrice;
 
   const handleRemoveItem = (id: string) => {
     dispatch(removeFromCart(id));
@@ -17,6 +32,35 @@ export default function CartPage() {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+
+  const handleUseCreditsToggle = () => {
+    setUseCredits(!useCredits);
+    if (!useCredits) {
+      setCreditsToUse(maxCreditsCanUse);
+    } else {
+      setCreditsToUse(0);
+    }
+  };
+
+  const handleCreditsChange = (value: number) => {
+    const clampedValue = Math.min(Math.max(0, value), maxCreditsCanUse);
+    setCreditsToUse(clampedValue);
+  };
+
+  const handlePlaceOrder = async () => {
+    try {
+      const ebookIds = cartItems.map((item) => item.id);
+      const result = await createOrder({
+        ebookIds,
+        creditsToUse: useCredits ? creditsToUse : 0,
+      }).unwrap();
+
+      dispatch(clearCart());
+      router.push(`/order-success?orderId=${result.order?.id}`);
+    } catch (error: any) {
+      alert(error?.data?.message || "Failed to place order. Please try again.");
+    }
   };
 
   if (cartItems.length === 0) {
@@ -119,16 +163,75 @@ export default function CartPage() {
                     ${totalPrice.toFixed(2)}
                   </span>
                 </div>
+
+                {userCredits > 0 && (
+                  <div className='border-t border-gray-200 pt-3'>
+                    <div className='flex items-center justify-between mb-3'>
+                      <div className='flex items-center gap-2'>
+                        <Coins className='w-5 h-5 text-yellow-500' />
+                        <span className='text-gray-700 font-medium'>
+                          Use Credits
+                        </span>
+                      </div>
+                      <label className='relative inline-flex items-center cursor-pointer'>
+                        <input
+                          type='checkbox'
+                          checked={useCredits}
+                          onChange={handleUseCreditsToggle}
+                          className='sr-only peer'
+                        />
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary)]"></div>
+                      </label>
+                    </div>
+
+                    {useCredits && (
+                      <div className='bg-gray-50 rounded-lg p-4 space-y-3'>
+                        <div className='flex justify-between text-sm'>
+                          <span className='text-gray-600'>
+                            Available Credits
+                          </span>
+                          <span className='font-semibold text-gray-800'>
+                            {userCredits}
+                          </span>
+                        </div>
+                        <div>
+                          <label className='text-sm text-gray-600 mb-2 block'>
+                            Credits to use (1 credit = $1)
+                          </label>
+                          <input
+                            type='number'
+                            min='0'
+                            max={maxCreditsCanUse}
+                            value={creditsToUse}
+                            onChange={(e) =>
+                              handleCreditsChange(Number(e.target.value))
+                            }
+                            className='w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]'
+                          />
+                        </div>
+                        <div className='flex justify-between text-sm text-green-600 font-semibold'>
+                          <span>Credit Discount</span>
+                          <span>-${creditsToUse.toFixed(2)}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <div className='border-t border-gray-200 pt-3'>
                   <div className='flex justify-between text-lg font-bold text-gray-800'>
                     <span>Total</span>
-                    <span>${totalPrice.toFixed(2)}</span>
+                    <span>${finalPrice.toFixed(2)}</span>
                   </div>
                 </div>
               </div>
 
-              <button className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-3 rounded-lg font-semibold transition-colors mb-3'>
-                Proceed to Checkout
+              <button
+                onClick={handlePlaceOrder}
+                disabled={isCreatingOrder}
+                className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-3 rounded-lg font-semibold transition-colors mb-3 disabled:opacity-50 disabled:cursor-not-allowed'
+              >
+                {isCreatingOrder ? "Processing..." : "Place Order"}
               </button>
 
               <Link
