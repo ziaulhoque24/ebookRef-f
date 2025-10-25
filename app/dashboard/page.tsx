@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { getGreeting } from "@/lib/functions";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import CreditInstructions from "../components/Dashboard/CreditInstructions";
 import DashboardStats from "../components/Dashboard/DashboardStats";
 import DashboardTabs from "../components/Dashboard/DashboardTabs";
@@ -19,6 +20,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function DashboardPage() {
   const session = await auth();
+
+  if (!session) {
+    redirect("/login");
+  }
+
   const userName = session?.user?.firstName || "User";
   const greeting = getGreeting();
 

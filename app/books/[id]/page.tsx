@@ -20,7 +20,7 @@ interface BookDetail {
   genres: Genre[];
   fileUrl?: string;
 }
-
+export const dynamic = "force-dynamic";
 async function getBook(id: string): Promise<BookDetail | null> {
   try {
     const session = await auth();
