@@ -68,7 +68,7 @@ export default function AddToCartButton({
   return (
     <button
       onClick={handleAddToCart}
-      className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-base sm:text-lg'
+      className='w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-base sm:text-lg'
     >
       <ShoppingCart className='w-5 h-5 sm:w-6 sm:h-6' />
       {added ? "Added to Cart!" : "Add to Cart"}

@@ -7,30 +7,27 @@ export default function Footer() {
       <div className='bg-[#333333] py-4'>
         <div className='container mx-auto px-4'>
           <nav className='flex flex-wrap justify-center gap-6 text-sm'>
-            <Link
-              href='/'
-              className='hover:text-[var(--primary)] transition-colors'
-            >
+            <Link href='/' className='hover:text-primary transition-colors'>
               Home
             </Link>
             <span className='text-gray-500'>|</span>
             <Link
               href='/terms'
-              className='hover:text-[var(--primary)] transition-colors'
+              className='hover:text-primary transition-colors'
             >
               Terms And Conditions
             </Link>
             <span className='text-gray-500'>|</span>
             <Link
               href='/privacy'
-              className='hover:text-[var(--primary)] transition-colors'
+              className='hover:text-primary transition-colors'
             >
               Privacy Policy
             </Link>
             <span className='text-gray-500'>|</span>
             <Link
               href='/contact'
-              className='hover:text-[var(--primary)] transition-colors'
+              className='hover:text-primary transition-colors'
             >
               Contact Us
             </Link>
@@ -55,7 +52,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/'
-                  className='text-gray-300 hover:text-[var(--primary)] transition-colors'
+                  className='text-gray-300 hover:text-primary transition-colors'
                 >
                   Home
                 </Link>
@@ -63,7 +60,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/contact'
-                  className='text-gray-300 hover:text-[var(--primary)] transition-colors'
+                  className='text-gray-300 hover:text-primary transition-colors'
                 >
                   Contact us
                 </Link>
@@ -71,7 +68,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/terms'
-                  className='text-gray-300 hover:text-[var(--primary)] transition-colors'
+                  className='text-gray-300 hover:text-primary transition-colors'
                 >
                   Terms and Conditions
                 </Link>
@@ -79,7 +76,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/privacy'
-                  className='text-gray-300 hover:text-[var(--primary)] transition-colors'
+                  className='text-gray-300 hover:text-primary transition-colors'
                 >
                   Privacy Policy
                 </Link>
@@ -95,7 +92,7 @@ export default function Footer() {
                 <br />
                 <a
                   href='mailto:info@referebook.com'
-                  className='hover:text-[var(--primary)] transition-colors'
+                  className='hover:text-primary transition-colors'
                 >
                   info@referebook.com
                 </a>
@@ -105,7 +102,7 @@ export default function Footer() {
                 <br />
                 <a
                   href='mailto:support@referebook.com'
-                  className='hover:text-[var(--primary)] transition-colors'
+                  className='hover:text-primary transition-colors'
                 >
                   support@referebook.com
                 </a>
@@ -115,7 +112,7 @@ export default function Footer() {
                 <div className='flex gap-3 mt-2'>
                   <Link
                     href='https://twitter.com'
-                    className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
+                    className='bg-white hover:bg-primary text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
                     target='_blank'
                     aria-label='Twitter'
                   >
@@ -123,7 +120,7 @@ export default function Footer() {
                   </Link>
                   <Link
                     href='https://facebook.com'
-                    className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
+                    className='bg-white hover:bg-primary text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
                     target='_blank'
                     aria-label='Facebook'
                   >
@@ -131,7 +128,7 @@ export default function Footer() {
                   </Link>
                   <Link
                     href='https://instagram.com'
-                    className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
+                    className='bg-white hover:bg-primary text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
                     target='_blank'
                     aria-label='Instagram'
                   >

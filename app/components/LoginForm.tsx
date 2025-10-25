@@ -38,7 +38,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-[var(--primary)]/5 via-white to-[var(--secondary)]/5 px-4 py-8 sm:py-12'>
+    <div className='min-h-screen flex items-center justify-center bg-linear-to-br from-(--primary)/5 via-white to-(--secondary)/5 px-4 py-8 sm:py-12'>
       <div className='w-full max-w-md'>
         <div className='bg-white rounded-2xl shadow-xl p-6 sm:p-8'>
           <div className='text-center mb-6 sm:mb-8'>
@@ -46,9 +46,9 @@ const LoginForm = () => {
               href='/'
               className='inline-flex items-center gap-2 mb-4 sm:mb-6'
             >
-              <BookOpen className='w-8 h-8 sm:w-10 sm:h-10 text-[var(--primary)]' />
-              <span className='text-2xl sm:text-3xl font-bold text-[var(--primary)]'>
-                Refere<span className='text-[var(--secondary)]'>Book</span>
+              <BookOpen className='w-8 h-8 sm:w-10 sm:h-10 text-primary' />
+              <span className='text-2xl sm:text-3xl font-bold text-primary'>
+                Refere<span className='text-secondary'>Book</span>
               </span>
             </Link>
             <h1 className='text-xl sm:text-2xl font-bold text-gray-800 mb-2'>
@@ -61,7 +61,7 @@ const LoginForm = () => {
 
           {isRegistered && (
             <div className='mb-4 sm:mb-6 p-3 sm:p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-2 sm:gap-3'>
-              <CheckCircle className='w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5' />
+              <CheckCircle className='w-4 h-4 sm:w-5 sm:h-5 text-green-500 shrink-0 mt-0.5' />
               <p className='text-green-700 text-xs sm:text-sm'>
                 Registration successful! Please sign in with your credentials.
               </p>
@@ -70,7 +70,7 @@ const LoginForm = () => {
 
           {error && (
             <div className='mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2 sm:gap-3'>
-              <AlertCircle className='w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0 mt-0.5' />
+              <AlertCircle className='w-4 h-4 sm:w-5 sm:h-5 text-red-500 shrink-0 mt-0.5' />
               <p className='text-red-700 text-xs sm:text-sm'>{error}</p>
             </div>
           )}
@@ -90,7 +90,7 @@ const LoginForm = () => {
                   name='email'
                   id='email'
                   required
-                  className='w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white text-sm sm:text-base'
+                  className='w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white text-sm sm:text-base'
                   placeholder='you@example.com'
                 />
               </div>
@@ -110,7 +110,7 @@ const LoginForm = () => {
                   name='password'
                   id='password'
                   required
-                  className='w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white text-sm sm:text-base'
+                  className='w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white text-sm sm:text-base'
                   placeholder='••••••••'
                 />
               </div>
@@ -119,7 +119,7 @@ const LoginForm = () => {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base'
+              className='w-full bg-primary hover:bg-primary-dark text-white py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base'
             >
               {isLoading ? "Signing in..." : "Sign In"}
             </button>
@@ -130,7 +130,7 @@ const LoginForm = () => {
               Don't have an account?{" "}
               <Link
                 href='/register'
-                className='text-[var(--secondary)] hover:text-[var(--secondary-light)] font-semibold transition-colors'
+                className='text-secondary hover:text-secondary-light font-semibold transition-colors'
               >
                 Join now
               </Link>
@@ -140,17 +140,11 @@ const LoginForm = () => {
           <div className='mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200'>
             <p className='text-xs text-center text-gray-500'>
               By signing in, you agree to our{" "}
-              <Link
-                href='/terms'
-                className='text-[var(--primary)] hover:underline'
-              >
+              <Link href='/terms' className='text-primary hover:underline'>
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link
-                href='/privacy'
-                className='text-[var(--primary)] hover:underline'
-              >
+              <Link href='/privacy' className='text-primary hover:underline'>
                 Privacy Policy
               </Link>
             </p>
@@ -160,7 +154,7 @@ const LoginForm = () => {
         <div className='mt-6 sm:mt-8 text-center'>
           <Link
             href='/'
-            className='text-sm sm:text-base text-gray-600 hover:text-[var(--primary)] transition-colors inline-flex items-center gap-2'
+            className='text-sm sm:text-base text-gray-600 hover:text-primary transition-colors inline-flex items-center gap-2'
           >
             ← Back to Home
           </Link>

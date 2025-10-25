@@ -9,7 +9,7 @@ import {
 } from "@/redux/feature/order/orderApi";
 import { Download, Package, ShoppingBag } from "lucide-react";
 import { useState } from "react";
-import Pagination from "../Paginaiton";
+import Pagination from "../Pagination";
 
 export default function DashboardTabs() {
   const [activeTab, setActiveTab] = useState<"purchased" | "orders">(
@@ -61,7 +61,7 @@ export default function DashboardTabs() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 px-4 sm:px-6 py-3 sm:py-4 font-semibold transition-colors flex items-center justify-center gap-2 text-sm sm:text-base ${
                 activeTab === tab.id
-                  ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
+                  ? "text-primary border-b-2 border-primary"
                   : "text-gray-600 hover:text-gray-800"
               }`}
             >
@@ -77,7 +77,7 @@ export default function DashboardTabs() {
           <>
             {isLoadingPurchased ? (
               <div className='text-center py-12'>
-                <div className='inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--primary)]'></div>
+                <div className='inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary'></div>
                 <p className='text-gray-600 mt-4'>Loading books...</p>
               </div>
             ) : purchasedBooks && purchasedBooks.length > 0 ? (
@@ -85,7 +85,7 @@ export default function DashboardTabs() {
                 {purchasedBooks.map((book: PurchasedBook) => (
                   <div
                     key={book.id}
-                    className='border border-gray-200 rounded-lg overflow-hidden hover:border-[var(--primary)] transition-colors'
+                    className='border border-gray-200 rounded-lg overflow-hidden hover:border-primary transition-colors'
                   >
                     <img
                       src={book.coverImage}
@@ -127,7 +127,7 @@ export default function DashboardTabs() {
                         href={book.fileUrl}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='flex items-center justify-center gap-2 w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-3 sm:px-4 py-2 rounded-lg font-semibold transition-colors text-sm'
+                        className='flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary-dark text-white px-3 sm:px-4 py-2 rounded-lg font-semibold transition-colors text-sm'
                       >
                         <Download className='w-4 h-4' />
                         Download Book
@@ -146,8 +146,8 @@ export default function DashboardTabs() {
                   Start exploring our collection and purchase your first book!
                 </p>
                 <a
-                  href='/books'
-                  className='inline-block bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-6 py-3 rounded-lg font-semibold transition-colors'
+                  href='/'
+                  className='inline-block bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors'
                 >
                   Browse Books
                 </a>
@@ -160,7 +160,7 @@ export default function DashboardTabs() {
           <>
             {isLoadingOrders ? (
               <div className='text-center py-12'>
-                <div className='inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--primary)]'></div>
+                <div className='inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary'></div>
                 <p className='text-gray-600 mt-4'>Loading orders...</p>
               </div>
             ) : ordersData && ordersData.items.length > 0 ? (
@@ -169,7 +169,7 @@ export default function DashboardTabs() {
                   {ordersData.items.map((order: Order) => (
                     <div
                       key={order.id}
-                      className='border border-gray-200 rounded-lg p-3 sm:p-4 hover:border-[var(--primary)] transition-colors'
+                      className='border border-gray-200 rounded-lg p-3 sm:p-4 hover:border-primary transition-colors'
                     >
                       <div className='flex flex-col sm:flex-row sm:items-start justify-between mb-3 sm:mb-4 gap-2'>
                         <div className='flex-1'>
@@ -205,7 +205,7 @@ export default function DashboardTabs() {
                             <img
                               src={item.ebook.coverImage}
                               alt={item.ebook.title}
-                              className='w-12 h-16 sm:w-16 sm:h-20 object-cover rounded flex-shrink-0'
+                              className='w-12 h-16 sm:w-16 sm:h-20 object-cover rounded shrink-0'
                             />
                             <div className='flex-1 min-w-0'>
                               <h4 className='font-semibold text-sm sm:text-base text-gray-800 line-clamp-2'>

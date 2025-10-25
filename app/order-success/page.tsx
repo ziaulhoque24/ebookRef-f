@@ -37,7 +37,7 @@ export default function OrderSuccessPage() {
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Link
               href='/dashboard'
-              className='bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-8 py-3 rounded-lg font-semibold transition-colors'
+              className='bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors'
             >
               Go to Dashboard
             </Link>

@@ -116,7 +116,7 @@ export default async function BookDetailPage({
                   </div>
 
                   <div className='mb-6 sm:mb-8'>
-                    <p className='text-4xl sm:text-5xl font-bold text-[var(--primary)]'>
+                    <p className='text-4xl sm:text-5xl font-bold text-primary'>
                       ${book.price.toFixed(2)}
                     </p>
                   </div>
@@ -177,7 +177,7 @@ export default async function BookDetailPage({
           <div className='mt-6 sm:mt-8 text-center'>
             <a
               href='/'
-              className='inline-block text-[var(--primary)] hover:text-[var(--primary-dark)] font-semibold transition-colors text-sm sm:text-base'
+              className='inline-block text-primary hover:text-primary-dark font-semibold transition-colors text-sm sm:text-base'
             >
               ← Back to Books
             </a>

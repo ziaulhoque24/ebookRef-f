@@ -213,7 +213,7 @@ export default function PrivacyPage() {
                 To exercise these rights, please contact us at{" "}
                 <a
                   href='mailto:privacy@referebook.com'
-                  className='text-[var(--primary)] hover:underline'
+                  className='text-primary hover:underline'
                 >
                   privacy@referebook.com
                 </a>
@@ -281,7 +281,7 @@ export default function PrivacyPage() {
                 Email:{" "}
                 <a
                   href='mailto:privacy@referebook.com'
-                  className='text-[var(--primary)] hover:underline'
+                  className='text-primary hover:underline'
                 >
                   privacy@referebook.com
                 </a>
@@ -289,7 +289,7 @@ export default function PrivacyPage() {
                 Support:{" "}
                 <a
                   href='mailto:support@referebook.com'
-                  className='text-[var(--primary)] hover:underline'
+                  className='text-primary hover:underline'
                 >
                   support@referebook.com
                 </a>

@@ -38,14 +38,14 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-[var(--primary)]/5 via-white to-[var(--secondary)]/5 px-4 py-12'>
+    <div className='min-h-screen flex items-center justify-center bg-linear-to-br from-(--primary)/5 via-white to-(--secondary)/5 px-4 py-12'>
       <div className='w-full max-w-md'>
         <div className='bg-white rounded-2xl shadow-xl p-8'>
           <div className='text-center mb-8'>
             <Link href='/' className='inline-flex items-center gap-2 mb-6'>
-              <BookOpen className='w-10 h-10 text-[var(--primary)]' />
-              <span className='text-3xl font-bold text-[var(--primary)]'>
-                Refere<span className='text-[var(--secondary)]'>Book</span>
+              <BookOpen className='w-10 h-10 text-primary' />
+              <span className='text-3xl font-bold text-primary'>
+                Refere<span className='text-secondary'>Book</span>
               </span>
             </Link>
             <h1 className='text-2xl font-bold text-gray-800 mb-2'>
@@ -56,7 +56,7 @@ const RegisterForm = () => {
 
           {error && (
             <div className='mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3'>
-              <AlertCircle className='w-5 h-5 text-red-500 flex-shrink-0 mt-0.5' />
+              <AlertCircle className='w-5 h-5 text-red-500 shrink-0 mt-0.5' />
               <p className='text-red-700 text-sm'>{error}</p>
             </div>
           )}
@@ -77,7 +77,7 @@ const RegisterForm = () => {
                     name='firstName'
                     id='firstName'
                     required
-                    className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                    className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
                     placeholder='John'
                   />
                 </div>
@@ -97,7 +97,7 @@ const RegisterForm = () => {
                     name='lastName'
                     id='lastName'
                     required
-                    className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                    className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
                     placeholder='Doe'
                   />
                 </div>
@@ -118,7 +118,7 @@ const RegisterForm = () => {
                   name='email'
                   id='email'
                   required
-                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
                   placeholder='you@example.com'
                 />
               </div>
@@ -139,7 +139,7 @@ const RegisterForm = () => {
                   id='password'
                   required
                   minLength={8}
-                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
                   placeholder='••••••••'
                 />
               </div>
@@ -166,7 +166,7 @@ const RegisterForm = () => {
                   id='referralCode'
                   defaultValue={urlReferralCode || ""}
                   disabled={!!urlReferralCode}
-                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white disabled:bg-gray-100 disabled:cursor-not-allowed'
+                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white disabled:bg-gray-100 disabled:cursor-not-allowed'
                   placeholder='Enter referral code'
                 />
               </div>
@@ -180,7 +180,7 @@ const RegisterForm = () => {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'
+              className='w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'
             >
               {isLoading ? "Creating Account..." : "Create Account"}
             </button>
@@ -191,7 +191,7 @@ const RegisterForm = () => {
               Already have an account?{" "}
               <Link
                 href='/login'
-                className='text-[var(--secondary)] hover:text-[var(--secondary-light)] font-semibold transition-colors'
+                className='text-secondary hover:text-secondary-light font-semibold transition-colors'
               >
                 Sign in
               </Link>
@@ -201,17 +201,11 @@ const RegisterForm = () => {
           <div className='mt-6 pt-6 border-t border-gray-200'>
             <p className='text-xs text-center text-gray-500'>
               By creating an account, you agree to our{" "}
-              <Link
-                href='/terms'
-                className='text-[var(--primary)] hover:underline'
-              >
+              <Link href='/terms' className='text-primary hover:underline'>
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link
-                href='/privacy'
-                className='text-[var(--primary)] hover:underline'
-              >
+              <Link href='/privacy' className='text-primary hover:underline'>
                 Privacy Policy
               </Link>
             </p>
@@ -221,7 +215,7 @@ const RegisterForm = () => {
         <div className='mt-8 text-center'>
           <Link
             href='/'
-            className='text-gray-600 hover:text-[var(--primary)] transition-colors inline-flex items-center gap-2'
+            className='text-gray-600 hover:text-primary transition-colors inline-flex items-center gap-2'
           >
             ← Back to Home
           </Link>

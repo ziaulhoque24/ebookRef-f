@@ -23,12 +23,14 @@ export default function ReferralLink({ referralLink }: ReferralLinkProps) {
   return (
     <div>
       <div className='flex items-center gap-2 mb-2 sm:mb-3'>
-        <Share2 className='w-4 h-4 sm:w-5 sm:h-5 text-[var(--primary)]' />
+        <Share2 className='w-4 h-4 sm:w-5 sm:h-5 text-primary' />
         <div>
           <h3 className='text-base sm:text-lg font-bold text-gray-800'>
             Your Referral Link
           </h3>
-          <p className='text-gray-600 text-xs sm:text-sm'>Share and earn rewards!</p>
+          <p className='text-gray-600 text-xs sm:text-sm'>
+            Share and earn rewards!
+          </p>
         </div>
       </div>
       <div className='flex flex-col sm:flex-row gap-2'>
@@ -37,12 +39,12 @@ export default function ReferralLink({ referralLink }: ReferralLinkProps) {
             type='text'
             value={referralLink}
             readOnly
-            className='w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-300 rounded-lg bg-white text-gray-800 font-mono text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]'
+            className='w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-300 rounded-lg bg-white text-gray-800 font-mono text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary'
           />
         </div>
         <button
           onClick={handleCopy}
-          className='bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap text-sm sm:text-base'
+          className='bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap text-sm sm:text-base'
         >
           {copied ? (
             <>

@@ -24,7 +24,7 @@ export default function ContactPage() {
 
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12'>
             <div className='bg-white rounded-xl shadow-md p-5 sm:p-6 text-center hover:shadow-lg transition-shadow'>
-              <div className='inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[var(--primary)] rounded-full mb-3 sm:mb-4'>
+              <div className='inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-primary rounded-full mb-3 sm:mb-4'>
                 <Mail className='w-7 h-7 sm:w-8 sm:h-8 text-white' />
               </div>
               <h3 className='text-base sm:text-lg font-semibold text-gray-900 mb-2'>
@@ -35,14 +35,14 @@ export default function ContactPage() {
               </p>
               <a
                 href='mailto:info@referebook.com'
-                className='text-[var(--primary)] hover:underline font-medium text-sm sm:text-base break-all'
+                className='text-primary hover:underline font-medium text-sm sm:text-base break-all'
               >
                 info@referebook.com
               </a>
             </div>
 
             <div className='bg-white rounded-xl shadow-md p-5 sm:p-6 text-center hover:shadow-lg transition-shadow'>
-              <div className='inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[var(--primary)] rounded-full mb-3 sm:mb-4'>
+              <div className='inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-primary rounded-full mb-3 sm:mb-4'>
                 <Mail className='w-7 h-7 sm:w-8 sm:h-8 text-white' />
               </div>
               <h3 className='text-base sm:text-lg font-semibold text-gray-900 mb-2'>
@@ -53,14 +53,14 @@ export default function ContactPage() {
               </p>
               <a
                 href='mailto:support@referebook.com'
-                className='text-[var(--primary)] hover:underline font-medium text-sm sm:text-base break-all'
+                className='text-primary hover:underline font-medium text-sm sm:text-base break-all'
               >
                 support@referebook.com
               </a>
             </div>
 
             <div className='bg-white rounded-xl shadow-md p-5 sm:p-6 text-center hover:shadow-lg transition-shadow sm:col-span-2 lg:col-span-1'>
-              <div className='inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[var(--primary)] rounded-full mb-3 sm:mb-4'>
+              <div className='inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-primary rounded-full mb-3 sm:mb-4'>
                 <Phone className='w-7 h-7 sm:w-8 sm:h-8 text-white' />
               </div>
               <h3 className='text-base sm:text-lg font-semibold text-gray-900 mb-2'>
@@ -71,7 +71,7 @@ export default function ContactPage() {
               </p>
               <a
                 href='tel:+1234567890'
-                className='text-[var(--primary)] hover:underline font-medium text-sm sm:text-base'
+                className='text-primary hover:underline font-medium text-sm sm:text-base'
               >
                 +1 (234) 567-890
               </a>
@@ -142,7 +142,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className='mt-6 sm:mt-8 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-xl shadow-md p-6 sm:p-8 text-white text-center'>
+          <div className='mt-6 sm:mt-8 bg-linear-to-r from-primary to-secondary rounded-xl shadow-md p-6 sm:p-8 text-white text-center'>
             <MapPin className='w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4' />
             <h3 className='text-xl sm:text-2xl font-bold mb-2'>Visit Us</h3>
             <p className='text-base sm:text-lg mb-2'>RefereBook Headquarters</p>

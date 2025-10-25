@@ -18,7 +18,7 @@ export default function NotFound() {
           </p>
           <Link
             href='/'
-            className='inline-block bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-8 py-3 rounded-lg font-semibold transition-colors'
+            className='inline-block bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors'
           >
             Browse All Books
           </Link>

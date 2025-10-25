@@ -1,3 +1,5 @@
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import RegisterForm from "../../components/RegisterForm";
 
 export const metadata = {
@@ -5,7 +7,12 @@ export const metadata = {
   description: "Create your account and start earning rewards",
 };
 
-const RegisterPage = () => {
+const RegisterPage = async () => {
+  const session = await auth();
+
+  if (session) {
+    redirect("/");
+  }
   return <RegisterForm />;
 };
 

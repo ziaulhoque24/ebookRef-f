@@ -11,7 +11,7 @@ import {
 export default function CreditInstructions() {
   return (
     <div className='space-y-6'>
-      <div className='bg-gradient-to-br from-[var(--primary)] to-orange-600 rounded-xl shadow-md p-6 text-white'>
+      <div className='bg-linear-to-br from-primary to-orange-600 rounded-xl shadow-md p-6 text-white'>
         <div className='flex items-center gap-3 mb-4'>
           <div className='bg-white/20 p-3 rounded-lg'>
             <Coins className='w-6 h-6' />
@@ -150,7 +150,7 @@ export default function CreditInstructions() {
         </div>
       </div>
 
-      <div className='bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-md p-6 text-white'>
+      <div className='bg-linear-to-br from-blue-500 to-purple-600 rounded-xl shadow-md p-6 text-white'>
         <div className='flex items-center gap-3 mb-4'>
           <div className='bg-white/20 p-3 rounded-lg'>
             <Lightbulb className='w-6 h-6' />
@@ -160,7 +160,7 @@ export default function CreditInstructions() {
 
         <div className='space-y-3'>
           <div className='flex items-start gap-3'>
-            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0'>
+            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0'>
               1
             </span>
             <p className='text-white/90 text-sm'>
@@ -171,7 +171,7 @@ export default function CreditInstructions() {
           </div>
 
           <div className='flex items-start gap-3'>
-            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0'>
+            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0'>
               2
             </span>
             <p className='text-white/90 text-sm'>
@@ -182,7 +182,7 @@ export default function CreditInstructions() {
           </div>
 
           <div className='flex items-start gap-3'>
-            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0'>
+            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0'>
               3
             </span>
             <p className='text-white/90 text-sm'>
@@ -193,7 +193,7 @@ export default function CreditInstructions() {
           </div>
 
           <div className='flex items-start gap-3'>
-            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0'>
+            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0'>
               4
             </span>
             <p className='text-white/90 text-sm'>
@@ -204,7 +204,7 @@ export default function CreditInstructions() {
           </div>
 
           <div className='flex items-start gap-3'>
-            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0'>
+            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0'>
               5
             </span>
             <p className='text-white/90 text-sm'>
@@ -215,7 +215,7 @@ export default function CreditInstructions() {
           </div>
 
           <div className='flex items-start gap-3'>
-            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0'>
+            <span className='bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0'>
               6
             </span>
             <p className='text-white/90 text-sm'>

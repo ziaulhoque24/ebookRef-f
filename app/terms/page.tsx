@@ -228,7 +228,7 @@ export default function TermsPage() {
                 Email:{" "}
                 <a
                   href='mailto:info@referebook.com'
-                  className='text-[var(--primary)] hover:underline'
+                  className='text-primary hover:underline'
                 >
                   info@referebook.com
                 </a>
@@ -236,7 +236,7 @@ export default function TermsPage() {
                 Support:{" "}
                 <a
                   href='mailto:support@referebook.com'
-                  className='text-[var(--primary)] hover:underline'
+                  className='text-primary hover:underline'
                 >
                   support@referebook.com
                 </a>

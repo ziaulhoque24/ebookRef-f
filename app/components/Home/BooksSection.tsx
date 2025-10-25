@@ -40,7 +40,7 @@ export default function BooksSection({
     <section className='py-12 sm:py-16 bg-white'>
       <div className='container mx-auto px-4 sm:px-6'>
         <div className='text-center mb-8 sm:mb-12'>
-          <h2 className='text-3xl sm:text-4xl font-bold text-[var(--secondary)] mb-2'>
+          <h2 className='text-3xl sm:text-4xl font-bold text-secondary mb-2'>
             CHOOSE YOUR BOOKS
           </h2>
           <p className='text-gray-600 text-sm sm:text-base'>
@@ -70,7 +70,7 @@ export default function BooksSection({
 
         {isFetching && currentPage > 1 && (
           <div className='text-center mt-8'>
-            <div className='inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--secondary)]'></div>
+            <div className='inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-secondary'></div>
             <p className='text-gray-600 mt-2 text-sm sm:text-base'>
               Loading more books...
             </p>
@@ -82,7 +82,7 @@ export default function BooksSection({
             <button
               onClick={handleSeeMore}
               disabled={isFetching}
-              className='bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base'
+              className='bg-primary hover:bg-primary-dark text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base'
             >
               See More Books
             </button>
