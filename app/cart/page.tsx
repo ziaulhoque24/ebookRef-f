@@ -91,50 +91,50 @@ export default function CartPage() {
 
   return (
     <div className='bg-gray-50'>
-      <div className='container mx-auto px-4 py-8'>
-        <div className='flex items-center justify-between mb-8'>
-          <h1 className='text-3xl md:text-4xl font-bold text-gray-800'>
+      <div className='container mx-auto px-4 sm:px-6 py-6 sm:py-8'>
+        <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4'>
+          <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800'>
             Shopping Cart
           </h1>
           <button
             onClick={handleClearCart}
-            className='text-red-600 hover:text-red-700 font-medium flex items-center gap-2 transition-colors'
+            className='text-red-600 hover:text-red-700 font-medium flex items-center gap-2 transition-colors text-sm sm:text-base'
           >
-            <Trash2 className='w-5 h-5' />
+            <Trash2 className='w-4 h-4 sm:w-5 sm:h-5' />
             Clear Cart
           </button>
         </div>
 
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8'>
           <div className='lg:col-span-2'>
-            <div className='space-y-4'>
+            <div className='space-y-3 sm:space-y-4'>
               {cartItems.map((item) => (
                 <div
                   key={item.id}
-                  className='bg-white rounded-xl shadow-md p-6 border border-gray-100'
+                  className='bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-100'
                 >
-                  <div className='flex gap-6'>
+                  <div className='flex gap-3 sm:gap-6'>
                     <img
                       src={item.image}
                       alt={item.title}
-                      className='w-24 h-32 object-cover rounded'
+                      className='w-20 h-28 sm:w-24 sm:h-32 object-cover rounded flex-shrink-0'
                     />
-                    <div className='flex-1'>
-                      <div className='flex items-start justify-between'>
-                        <div>
-                          <h3 className='text-lg font-semibold text-gray-800 mb-1'>
+                    <div className='flex-1 min-w-0'>
+                      <div className='flex items-start justify-between gap-2'>
+                        <div className='flex-1 min-w-0'>
+                          <h3 className='text-base sm:text-lg font-semibold text-gray-800 mb-1 line-clamp-2'>
                             {item.title}
                           </h3>
-                          <p className='text-gray-600 text-sm mb-4'>
+                          <p className='text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4'>
                             {item.author}
                           </p>
-                          <p className='text-xl font-bold text-gray-800'>
+                          <p className='text-lg sm:text-xl font-bold text-gray-800'>
                             ${item.price.toFixed(2)}
                           </p>
                         </div>
                         <button
                           onClick={() => handleRemoveItem(item.id)}
-                          className='text-gray-400 hover:text-red-600 transition-colors'
+                          className='text-gray-400 hover:text-red-600 transition-colors flex-shrink-0'
                           title='Remove item'
                         >
                           <X className='w-5 h-5' />
@@ -148,13 +148,13 @@ export default function CartPage() {
           </div>
 
           <div className='lg:col-span-1'>
-            <div className='bg-white rounded-xl shadow-md p-6 border border-gray-100 sticky top-24'>
-              <h2 className='text-xl font-bold text-gray-800 mb-6'>
+            <div className='bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-100 lg:sticky lg:top-24'>
+              <h2 className='text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6'>
                 Order Summary
               </h2>
 
-              <div className='space-y-3 mb-6'>
-                <div className='flex justify-between text-gray-600'>
+              <div className='space-y-3 mb-4 sm:mb-6'>
+                <div className='flex justify-between text-gray-600 text-sm sm:text-base'>
                   <span>
                     {cartItems.length}{" "}
                     {cartItems.length === 1 ? "ebook" : "ebooks"}
@@ -168,8 +168,8 @@ export default function CartPage() {
                   <div className='border-t border-gray-200 pt-3'>
                     <div className='flex items-center justify-between mb-3'>
                       <div className='flex items-center gap-2'>
-                        <Coins className='w-5 h-5 text-yellow-500' />
-                        <span className='text-gray-700 font-medium'>
+                        <Coins className='w-4 h-4 sm:w-5 sm:h-5 text-yellow-500' />
+                        <span className='text-gray-700 font-medium text-sm sm:text-base'>
                           Use Credits
                         </span>
                       </div>
@@ -185,8 +185,8 @@ export default function CartPage() {
                     </div>
 
                     {useCredits && (
-                      <div className='bg-gray-50 rounded-lg p-4 space-y-3'>
-                        <div className='flex justify-between text-sm'>
+                      <div className='bg-gray-50 rounded-lg p-3 sm:p-4 space-y-3'>
+                        <div className='flex justify-between text-xs sm:text-sm'>
                           <span className='text-gray-600'>
                             Available Credits
                           </span>
@@ -195,7 +195,7 @@ export default function CartPage() {
                           </span>
                         </div>
                         <div>
-                          <label className='text-sm text-gray-600 mb-2 block'>
+                          <label className='text-xs sm:text-sm text-gray-600 mb-2 block'>
                             Credits to use (1 credit = $1)
                           </label>
                           <input
@@ -206,10 +206,10 @@ export default function CartPage() {
                             onChange={(e) =>
                               handleCreditsChange(Number(e.target.value))
                             }
-                            className='w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]'
+                            className='w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm sm:text-base'
                           />
                         </div>
-                        <div className='flex justify-between text-sm text-green-600 font-semibold'>
+                        <div className='flex justify-between text-xs sm:text-sm text-green-600 font-semibold'>
                           <span>Credit Discount</span>
                           <span>-${creditsToUse.toFixed(2)}</span>
                         </div>
@@ -219,7 +219,7 @@ export default function CartPage() {
                 )}
 
                 <div className='border-t border-gray-200 pt-3'>
-                  <div className='flex justify-between text-lg font-bold text-gray-800'>
+                  <div className='flex justify-between text-base sm:text-lg font-bold text-gray-800'>
                     <span>Total</span>
                     <span>${finalPrice.toFixed(2)}</span>
                   </div>
@@ -229,14 +229,14 @@ export default function CartPage() {
               <button
                 onClick={handlePlaceOrder}
                 disabled={isCreatingOrder}
-                className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-3 rounded-lg font-semibold transition-colors mb-3 disabled:opacity-50 disabled:cursor-not-allowed'
+                className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-2.5 sm:py-3 rounded-lg font-semibold transition-colors mb-3 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base'
               >
                 {isCreatingOrder ? "Processing..." : "Place Order"}
               </button>
 
               <Link
                 href='/'
-                className='block text-center text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium transition-colors'
+                className='block text-center text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium transition-colors text-sm sm:text-base'
               >
                 Continue Shopping
               </Link>

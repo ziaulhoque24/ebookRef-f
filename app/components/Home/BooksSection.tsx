@@ -37,18 +37,18 @@ export default function BooksSection({
   };
 
   return (
-    <section className='py-16 bg-white'>
-      <div className='container mx-auto px-4'>
-        <div className='text-center mb-12'>
-          <h2 className='text-4xl font-bold text-[var(--secondary)] mb-2'>
+    <section className='py-12 sm:py-16 bg-white'>
+      <div className='container mx-auto px-4 sm:px-6'>
+        <div className='text-center mb-8 sm:mb-12'>
+          <h2 className='text-3xl sm:text-4xl font-bold text-[var(--secondary)] mb-2'>
             CHOOSE YOUR BOOKS
           </h2>
-          <p className='text-gray-600 text-sm'>
+          <p className='text-gray-600 text-sm sm:text-base'>
             Explore our collection of {total} books across all genres.
           </p>
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8'>
+        <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8'>
           {books.length === 0 && !isLoading ? (
             <p className='col-span-full text-center text-gray-500'>
               No books found.
@@ -70,28 +70,30 @@ export default function BooksSection({
         {isFetching && currentPage > 1 && (
           <div className='text-center mt-8'>
             <div className='inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--secondary)]'></div>
-            <p className='text-gray-600 mt-2'>Loading more books...</p>
+            <p className='text-gray-600 mt-2 text-sm sm:text-base'>
+              Loading more books...
+            </p>
           </div>
         )}
 
         {hasMoreBooks && !isFetching && (
-          <div className='text-center mt-12'>
+          <div className='text-center mt-8 sm:mt-12'>
             <button
               onClick={handleSeeMore}
               disabled={isFetching}
-              className='bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-semibold px-8 py-3 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
+              className='bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base'
             >
               See More Books
             </button>
-            <p className='text-gray-500 text-sm mt-2'>
+            <p className='text-gray-500 text-xs sm:text-sm mt-2'>
               Showing {books.length} of {total} books
             </p>
           </div>
         )}
 
         {!hasMoreBooks && books.length > 0 && (
-          <div className='text-center mt-12'>
-            <p className='text-gray-600 text-sm'>
+          <div className='text-center mt-8 sm:mt-12'>
+            <p className='text-gray-600 text-xs sm:text-sm'>
               You've viewed all {total} books
             </p>
           </div>

@@ -24,15 +24,15 @@ export default async function DashboardPage() {
 
   return (
     <div className='bg-gray-50'>
-      <div className='container mx-auto px-4 py-8'>
+      <div className='container mx-auto px-4 sm:px-6 py-6 sm:py-8'>
         <DashboardStats greeting={greeting} userName={userName} />
 
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
-          <div className='lg:col-span-1'>
-            <CreditInstructions />
-          </div>
-          <div className='lg:col-span-2'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6'>
+          <div className='lg:col-span-2 order-1'>
             <DashboardTabs />
+          </div>
+          <div className='lg:col-span-1 order-2'>
+            <CreditInstructions />
           </div>
         </div>
       </div>

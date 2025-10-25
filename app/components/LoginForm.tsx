@@ -38,39 +38,44 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-[var(--primary)]/5 via-white to-[var(--secondary)]/5 px-4 py-12'>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-[var(--primary)]/5 via-white to-[var(--secondary)]/5 px-4 py-8 sm:py-12'>
       <div className='w-full max-w-md'>
-        <div className='bg-white rounded-2xl shadow-xl p-8'>
-          <div className='text-center mb-8'>
-            <Link href='/' className='inline-flex items-center gap-2 mb-6'>
-              <BookOpen className='w-10 h-10 text-[var(--primary)]' />
-              <span className='text-3xl font-bold text-[var(--primary)]'>
+        <div className='bg-white rounded-2xl shadow-xl p-6 sm:p-8'>
+          <div className='text-center mb-6 sm:mb-8'>
+            <Link
+              href='/'
+              className='inline-flex items-center gap-2 mb-4 sm:mb-6'
+            >
+              <BookOpen className='w-8 h-8 sm:w-10 sm:h-10 text-[var(--primary)]' />
+              <span className='text-2xl sm:text-3xl font-bold text-[var(--primary)]'>
                 Refere<span className='text-[var(--secondary)]'>Book</span>
               </span>
             </Link>
-            <h1 className='text-2xl font-bold text-gray-800 mb-2'>
+            <h1 className='text-xl sm:text-2xl font-bold text-gray-800 mb-2'>
               Welcome Back
             </h1>
-            <p className='text-gray-600'>Sign in to your account to continue</p>
+            <p className='text-sm sm:text-base text-gray-600'>
+              Sign in to your account to continue
+            </p>
           </div>
 
           {isRegistered && (
-            <div className='mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3'>
-              <CheckCircle className='w-5 h-5 text-green-500 flex-shrink-0 mt-0.5' />
-              <p className='text-green-700 text-sm'>
+            <div className='mb-4 sm:mb-6 p-3 sm:p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-2 sm:gap-3'>
+              <CheckCircle className='w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5' />
+              <p className='text-green-700 text-xs sm:text-sm'>
                 Registration successful! Please sign in with your credentials.
               </p>
             </div>
           )}
 
           {error && (
-            <div className='mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3'>
-              <AlertCircle className='w-5 h-5 text-red-500 flex-shrink-0 mt-0.5' />
-              <p className='text-red-700 text-sm'>{error}</p>
+            <div className='mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2 sm:gap-3'>
+              <AlertCircle className='w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0 mt-0.5' />
+              <p className='text-red-700 text-xs sm:text-sm'>{error}</p>
             </div>
           )}
 
-          <form onSubmit={onSubmit} className='space-y-6'>
+          <form onSubmit={onSubmit} className='space-y-5 sm:space-y-6'>
             <div>
               <label
                 htmlFor='email'
@@ -79,13 +84,13 @@ const LoginForm = () => {
                 Email Address
               </label>
               <div className='relative'>
-                <Mail className='absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
+                <Mail className='absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400' />
                 <input
                   type='email'
                   name='email'
                   id='email'
                   required
-                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                  className='w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white text-sm sm:text-base'
                   placeholder='you@example.com'
                 />
               </div>
@@ -99,13 +104,13 @@ const LoginForm = () => {
                 Password
               </label>
               <div className='relative'>
-                <Lock className='absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
+                <Lock className='absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400' />
                 <input
                   type='password'
                   name='password'
                   id='password'
                   required
-                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white'
+                  className='w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white text-sm sm:text-base'
                   placeholder='••••••••'
                 />
               </div>
@@ -114,14 +119,14 @@ const LoginForm = () => {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'
+              className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base'
             >
               {isLoading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
-          <div className='mt-8 text-center'>
-            <p className='text-gray-600'>
+          <div className='mt-6 sm:mt-8 text-center'>
+            <p className='text-sm sm:text-base text-gray-600'>
               Don't have an account?{" "}
               <Link
                 href='/register'
@@ -132,7 +137,7 @@ const LoginForm = () => {
             </p>
           </div>
 
-          <div className='mt-6 pt-6 border-t border-gray-200'>
+          <div className='mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200'>
             <p className='text-xs text-center text-gray-500'>
               By signing in, you agree to our{" "}
               <Link
@@ -152,10 +157,10 @@ const LoginForm = () => {
           </div>
         </div>
 
-        <div className='mt-8 text-center'>
+        <div className='mt-6 sm:mt-8 text-center'>
           <Link
             href='/'
-            className='text-gray-600 hover:text-[var(--primary)] transition-colors inline-flex items-center gap-2'
+            className='text-sm sm:text-base text-gray-600 hover:text-[var(--primary)] transition-colors inline-flex items-center gap-2'
           >
             ← Back to Home
           </Link>

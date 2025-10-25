@@ -34,15 +34,6 @@ export default function Footer() {
             >
               Contact Us
             </Link>
-            <span className='text-gray-500'>|</span>
-
-            <span className='text-gray-500'>|</span>
-            <Link
-              href='/dmca'
-              className='hover:text-[var(--primary)] transition-colors'
-            >
-              DMCA
-            </Link>
           </nav>
         </div>
       </div>

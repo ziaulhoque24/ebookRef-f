@@ -8,17 +8,19 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className='min-h-screen bg-gray-50 py-12'>
-      <div className='container mx-auto px-4'>
-        <div className='max-w-4xl mx-auto bg-white rounded-xl shadow-md p-8 md:p-12'>
-          <h1 className='text-4xl font-bold text-gray-900 mb-4'>
+    <div className='min-h-screen bg-gray-50 py-8 sm:py-12'>
+      <div className='container mx-auto px-4 sm:px-6'>
+        <div className='max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6 sm:p-8 md:p-12'>
+          <h1 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4'>
             Privacy Policy
           </h1>
-          <p className='text-gray-600 mb-8'>Last Updated: October 25, 2025</p>
+          <p className='text-sm sm:text-base text-gray-600 mb-6 sm:mb-8'>
+            Last Updated: October 25, 2025
+          </p>
 
-          <div className='prose prose-lg max-w-none'>
-            <section className='mb-8'>
-              <h2 className='text-2xl font-bold text-gray-900 mb-4'>
+          <div className='prose prose-sm sm:prose-base lg:prose-lg max-w-none'>
+            <section className='mb-6 sm:mb-8'>
+              <h2 className='text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4'>
                 1. Introduction
               </h2>
               <p className='text-gray-700 mb-4'>

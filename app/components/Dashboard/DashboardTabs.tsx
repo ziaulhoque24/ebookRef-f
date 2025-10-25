@@ -59,20 +59,20 @@ export default function DashboardTabs() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 px-6 py-4 font-semibold transition-colors flex items-center justify-center gap-2 ${
+              className={`flex-1 px-4 sm:px-6 py-3 sm:py-4 font-semibold transition-colors flex items-center justify-center gap-2 text-sm sm:text-base ${
                 activeTab === tab.id
                   ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
                   : "text-gray-600 hover:text-gray-800"
               }`}
             >
-              <tab.icon className='w-5 h-5' />
-              {tab.label}
+              <tab.icon className='w-4 h-4 sm:w-5 sm:h-5' />
+              <span className='hidden sm:inline'>{tab.label}</span>
             </button>
           ))}
         </div>
       </div>
 
-      <div className='p-6'>
+      <div className='p-4 sm:p-6'>
         {activeTab === "purchased" && (
           <>
             {isLoadingPurchased ? (
@@ -81,7 +81,7 @@ export default function DashboardTabs() {
                 <p className='text-gray-600 mt-4'>Loading books...</p>
               </div>
             ) : purchasedBooks && purchasedBooks.length > 0 ? (
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6'>
                 {purchasedBooks.map((book: PurchasedBook) => (
                   <div
                     key={book.id}
@@ -90,16 +90,16 @@ export default function DashboardTabs() {
                     <img
                       src={book.coverImage}
                       alt={book.title}
-                      className='w-full h-64 object-cover'
+                      className='w-full h-48 sm:h-56 md:h-64 object-cover'
                     />
-                    <div className='p-4'>
-                      <h3 className='font-bold text-lg text-gray-800 mb-1 line-clamp-2'>
+                    <div className='p-3 sm:p-4'>
+                      <h3 className='font-bold text-base sm:text-lg text-gray-800 mb-1 line-clamp-2'>
                         {book.title}
                       </h3>
-                      <p className='text-sm text-gray-600 mb-2'>
+                      <p className='text-xs sm:text-sm text-gray-600 mb-2'>
                         {book.author}
                       </p>
-                      <p className='text-sm text-gray-700 mb-3 line-clamp-2'>
+                      <p className='text-xs sm:text-sm text-gray-700 mb-3 line-clamp-2'>
                         {book.description}
                       </p>
                       <div className='flex flex-wrap gap-1 mb-3'>
@@ -127,7 +127,7 @@ export default function DashboardTabs() {
                         href={book.fileUrl}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='flex items-center justify-center gap-2 w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-4 py-2 rounded-lg font-semibold transition-colors'
+                        className='flex items-center justify-center gap-2 w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-3 sm:px-4 py-2 rounded-lg font-semibold transition-colors text-sm'
                       >
                         <Download className='w-4 h-4' />
                         Download Book
@@ -165,19 +165,21 @@ export default function DashboardTabs() {
               </div>
             ) : ordersData && ordersData.items.length > 0 ? (
               <>
-                <div className='space-y-4 mb-6'>
+                <div className='space-y-3 sm:space-y-4 mb-6'>
                   {ordersData.items.map((order: Order) => (
                     <div
                       key={order.id}
-                      className='border border-gray-200 rounded-lg p-4 hover:border-[var(--primary)] transition-colors'
+                      className='border border-gray-200 rounded-lg p-3 sm:p-4 hover:border-[var(--primary)] transition-colors'
                     >
-                      <div className='flex items-start justify-between mb-4'>
-                        <div>
-                          <p className='text-sm text-gray-600'>
+                      <div className='flex flex-col sm:flex-row sm:items-start justify-between mb-3 sm:mb-4 gap-2'>
+                        <div className='flex-1'>
+                          <p className='text-xs sm:text-sm text-gray-600'>
                             Order ID:{" "}
-                            <span className='font-mono'>{order.id}</span>
+                            <span className='font-mono break-all'>
+                              {order.id}
+                            </span>
                           </p>
-                          <p className='text-sm text-gray-600 mt-1'>
+                          <p className='text-xs sm:text-sm text-gray-600 mt-1'>
                             Date:{" "}
                             {new Date(order.createdAt).toLocaleDateString(
                               "en-US",
@@ -189,27 +191,30 @@ export default function DashboardTabs() {
                             )}
                           </p>
                         </div>
-                        <span className='inline-block px-3 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full'>
+                        <span className='inline-block px-3 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full self-start'>
                           {order.status}
                         </span>
                       </div>
 
-                      <div className='space-y-3 mb-4'>
+                      <div className='space-y-3 mb-3 sm:mb-4'>
                         {order.items.map((item: OrderItem) => (
-                          <div key={item.id} className='flex gap-4 items-start'>
+                          <div
+                            key={item.id}
+                            className='flex gap-3 sm:gap-4 items-start'
+                          >
                             <img
                               src={item.ebook.coverImage}
                               alt={item.ebook.title}
-                              className='w-16 h-20 object-cover rounded'
+                              className='w-12 h-16 sm:w-16 sm:h-20 object-cover rounded flex-shrink-0'
                             />
-                            <div className='flex-1'>
-                              <h4 className='font-semibold text-gray-800'>
+                            <div className='flex-1 min-w-0'>
+                              <h4 className='font-semibold text-sm sm:text-base text-gray-800 line-clamp-2'>
                                 {item.ebook.title}
                               </h4>
-                              <p className='text-sm text-gray-600'>
+                              <p className='text-xs sm:text-sm text-gray-600'>
                                 {item.ebook.author}
                               </p>
-                              <p className='text-sm font-semibold text-gray-800 mt-1'>
+                              <p className='text-xs sm:text-sm font-semibold text-gray-800 mt-1'>
                                 ${item.priceAtPurchase.toFixed(2)}
                               </p>
                             </div>
@@ -218,21 +223,21 @@ export default function DashboardTabs() {
                       </div>
 
                       <div className='border-t border-gray-200 pt-3 space-y-1'>
-                        <div className='flex justify-between text-sm'>
+                        <div className='flex justify-between text-xs sm:text-sm'>
                           <span className='text-gray-600'>Total Amount</span>
                           <span className='font-semibold text-gray-800'>
                             ${order.totalAmount.toFixed(2)}
                           </span>
                         </div>
                         {order.creditsUsed > 0 && (
-                          <div className='flex justify-between text-sm'>
+                          <div className='flex justify-between text-xs sm:text-sm'>
                             <span className='text-gray-600'>Credits Used</span>
                             <span className='font-semibold text-green-600'>
                               -{order.creditsUsed}
                             </span>
                           </div>
                         )}
-                        <div className='flex justify-between text-sm font-bold'>
+                        <div className='flex justify-between text-xs sm:text-sm font-bold'>
                           <span className='text-gray-800'>Amount Paid</span>
                           <span className='text-gray-800'>
                             ${order.amountPaid.toFixed(2)}
