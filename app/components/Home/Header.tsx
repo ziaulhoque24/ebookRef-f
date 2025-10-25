@@ -19,33 +19,6 @@ export default async function Header() {
             </span>
           </Link>
 
-          <nav className='hidden md:flex items-center gap-8'>
-            <Link
-              href='/'
-              className='text-[var(--secondary)] hover:text-[var(--primary)] transition-colors'
-            >
-              HOME
-            </Link>
-            <Link
-              href='/about'
-              className='text-[var(--secondary)] hover:text-[var(--primary)] transition-colors'
-            >
-              ABOUT US
-            </Link>
-            <Link
-              href='/categories'
-              className='text-[var(--secondary)] hover:text-[var(--primary)] transition-colors'
-            >
-              GENRES
-            </Link>
-            <Link
-              href='/books'
-              className='text-[var(--secondary)] hover:text-[var(--primary)] transition-colors'
-            >
-              BOOKS
-            </Link>
-          </nav>
-
           <div className='flex items-center gap-3'>
             {isLoggedIn ? (
               <>

@@ -48,7 +48,7 @@ export default function Footer() {
       </div>
 
       <div className='container mx-auto px-4 py-12'>
-        <div className='grid grid-cols-1 md:grid-cols-4 gap-8 mb-8'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
           <div>
             <h3 className='text-lg font-bold mb-4'>REFEREBOOK</h3>
             <p className='text-gray-300 text-sm leading-relaxed'>
@@ -79,7 +79,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href='/#'
+                  href='/terms'
                   className='text-gray-300 hover:text-[var(--primary)] transition-colors'
                 >
                   Terms and Conditions
@@ -87,7 +87,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href='/#'
+                  href='/privacy'
                   className='text-gray-300 hover:text-[var(--primary)] transition-colors'
                 >
                   Privacy Policy
@@ -97,73 +97,58 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className='text-lg font-bold mb-4'>OUR COMPANY</h3>
-            <ul className='space-y-2 text-sm'>
+            <h3 className='text-lg font-bold mb-4'>CONTACT US</h3>
+            <ul className='space-y-3 text-sm text-gray-300'>
               <li>
-                <Link
-                  href='/about'
-                  className='text-gray-300 hover:text-[var(--primary)] transition-colors'
+                <span className='font-semibold text-white'>Email:</span>
+                <br />
+                <a
+                  href='mailto:info@referebook.com'
+                  className='hover:text-[var(--primary)] transition-colors'
                 >
-                  About Us
-                </Link>
+                  info@referebook.com
+                </a>
               </li>
               <li>
-                <Link
-                  href='/books'
-                  className='text-gray-300 hover:text-[var(--primary)] transition-colors'
+                <span className='font-semibold text-white'>Support:</span>
+                <br />
+                <a
+                  href='mailto:support@referebook.com'
+                  className='hover:text-[var(--primary)] transition-colors'
                 >
-                  Books
-                </Link>
+                  support@referebook.com
+                </a>
               </li>
-
               <li>
-                <Link
-                  href='/#'
-                  className='text-gray-300 hover:text-[var(--primary)] transition-colors'
-                >
-                  Genres
-                </Link>
+                <span className='font-semibold text-white'>Follow Us:</span>
+                <div className='flex gap-3 mt-2'>
+                  <Link
+                    href='https://twitter.com'
+                    className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
+                    target='_blank'
+                    aria-label='Twitter'
+                  >
+                    <Twitter className='w-5 h-5' />
+                  </Link>
+                  <Link
+                    href='https://facebook.com'
+                    className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
+                    target='_blank'
+                    aria-label='Facebook'
+                  >
+                    <Facebook className='w-5 h-5' />
+                  </Link>
+                  <Link
+                    href='https://instagram.com'
+                    className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
+                    target='_blank'
+                    aria-label='Instagram'
+                  >
+                    <Instagram className='w-5 h-5' />
+                  </Link>
+                </div>
               </li>
             </ul>
-          </div>
-
-          <div>
-            <h3 className='text-lg font-bold mb-4'>STAY CONNECTED</h3>
-            <p className='mb-4 text-gray-300 text-sm'>
-              Email:{" "}
-              <a
-                href='mailto:info@referebook.com'
-                className='hover:text-[var(--primary)] transition-colors'
-              >
-                info@referebook.com
-              </a>
-            </p>
-            <div className='flex gap-3'>
-              <Link
-                href='https://twitter.com'
-                className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
-                target='_blank'
-                aria-label='Twitter'
-              >
-                <Twitter className='w-5 h-5' />
-              </Link>
-              <Link
-                href='https://facebook.com'
-                className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
-                target='_blank'
-                aria-label='Facebook'
-              >
-                <Facebook className='w-5 h-5' />
-              </Link>
-              <Link
-                href='https://instagram.com'
-                className='bg-white hover:bg-[var(--primary)] text-[#2b2b2b] hover:text-white p-2 rounded-full transition-colors'
-                target='_blank'
-                aria-label='Instagram'
-              >
-                <Instagram className='w-5 h-5' />
-              </Link>
-            </div>
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { getGreeting } from "@/lib/functions";
 import type { Metadata } from "next";
+import CreditInstructions from "../components/Dashboard/CreditInstructions";
 import DashboardStats from "../components/Dashboard/DashboardStats";
 import DashboardTabs from "../components/Dashboard/DashboardTabs";
 
@@ -26,7 +27,14 @@ export default async function DashboardPage() {
       <div className='container mx-auto px-4 py-8'>
         <DashboardStats greeting={greeting} userName={userName} />
 
-        <DashboardTabs />
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+          <div className='lg:col-span-1'>
+            <CreditInstructions />
+          </div>
+          <div className='lg:col-span-2'>
+            <DashboardTabs />
+          </div>
+        </div>
       </div>
     </div>
   );
