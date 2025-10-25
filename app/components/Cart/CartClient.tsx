@@ -79,7 +79,7 @@ export default function CartClient() {
             </p>
             <Link
               href='/'
-              className='inline-block bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-8 py-3 rounded-lg font-semibold transition-colors'
+              className='inline-block bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors'
             >
               Browse Books
             </Link>
@@ -117,7 +117,7 @@ export default function CartClient() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className='w-20 h-28 sm:w-24 sm:h-32 object-cover rounded flex-shrink-0'
+                      className='w-20 h-28 sm:w-24 sm:h-32 object-cover rounded shrink-0'
                     />
                     <div className='flex-1 min-w-0'>
                       <div className='flex items-start justify-between gap-2'>
@@ -134,7 +134,7 @@ export default function CartClient() {
                         </div>
                         <button
                           onClick={() => handleRemoveItem(item.id)}
-                          className='text-gray-400 hover:text-red-600 transition-colors flex-shrink-0'
+                          className='text-gray-400 hover:text-red-600 transition-colors shrink-0'
                           title='Remove item'
                         >
                           <X className='w-5 h-5' />
@@ -180,7 +180,7 @@ export default function CartClient() {
                           onChange={handleUseCreditsToggle}
                           className='sr-only peer'
                         />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary)]"></div>
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                       </label>
                     </div>
 
@@ -206,7 +206,7 @@ export default function CartClient() {
                             onChange={(e) =>
                               handleCreditsChange(Number(e.target.value))
                             }
-                            className='w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm sm:text-base'
+                            className='w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-sm sm:text-base'
                           />
                         </div>
                         <div className='flex justify-between text-xs sm:text-sm text-green-600 font-semibold'>
@@ -229,14 +229,14 @@ export default function CartClient() {
               <button
                 onClick={handlePlaceOrder}
                 disabled={isCreatingOrder}
-                className='w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white py-2.5 sm:py-3 rounded-lg font-semibold transition-colors mb-3 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base'
+                className='w-full bg-primary hover:bg-primary-dark text-white py-2.5 sm:py-3 rounded-lg font-semibold transition-colors mb-3 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base'
               >
                 {isCreatingOrder ? "Processing..." : "Place Order"}
               </button>
 
               <Link
                 href='/'
-                className='block text-center text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium transition-colors text-sm sm:text-base'
+                className='block text-center text-primary hover:text-primary-dark font-medium transition-colors text-sm sm:text-base'
               >
                 Continue Shopping
               </Link>
