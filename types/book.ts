@@ -10,6 +10,7 @@ export interface Book {
   author?: string;
   price?: number;
   coverImage?: string;
+  fileUrl?: string;
   createdAt?: string;
   updatedAt?: string;
   genres?: Genre[];
@@ -26,4 +27,5 @@ export interface BookCardProps {
   author: string;
   image: string;
   price: string;
+  fileUrl?: string;
 }

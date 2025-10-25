@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import { BooksApiResponse } from "@/types/book";
 
 export async function fetchBooks(
@@ -11,12 +12,19 @@ export async function fetchBooks(
       return null;
     }
 
+    const session = await auth();
+    const headers: HeadersInit = {
+      "Content-Type": "application/json",
+    };
+
+    if (session?.accessToken) {
+      headers.authorization = `Bearer ${session.accessToken}`;
+    }
+
     const url = `${baseUrl}/api/books?page=${page}&count=${count}`;
     const response = await fetch(url, {
       cache: "no-store",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
     });
 
     if (!response.ok) {

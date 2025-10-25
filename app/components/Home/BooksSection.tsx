@@ -62,6 +62,7 @@ export default function BooksSection({
                 author={book.author ?? "Unknown"}
                 image={book.coverImage ?? "/books/default.jpg"}
                 price={book.price ? `$${book.price.toFixed(2)}` : "Free"}
+                fileUrl={book.fileUrl}
               />
             ))
           )}
