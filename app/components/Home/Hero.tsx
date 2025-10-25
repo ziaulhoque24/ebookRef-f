@@ -1,7 +1,14 @@
+"use client";
+
 import heroImage from "@/app/assets/hero_banner.webp";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
+  const { data: session } = useSession();
+  const isLoggedIn = !!session?.user;
+
   return (
     <section className='relative h-[500px] sm:h-[600px] md:h-[700px] overflow-hidden'>
       <div className='absolute inset-0 z-0'>
@@ -39,15 +46,20 @@ export default function Hero() {
             rewards by referring friends to discover amazing reads.
           </p>
 
-          <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4'>
-            <button className='bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1'>
-              Sign Up Now
-            </button>
+          {!isLoggedIn && (
+            <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4'>
+              <Link
+                href='/register'
+                className='inline-block text-center bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1'
+              >
+                Sign Up Now
+              </Link>
 
-            <span className='text-xs sm:text-sm text-gray-300 text-center sm:text-left'>
-              🎁 Get bonus rewards on signup
-            </span>
-          </div>
+              <span className='text-xs sm:text-sm text-gray-300 text-center sm:text-left'>
+                🎁 Get bonus rewards on signup
+              </span>
+            </div>
+          )}
 
           <div className='mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-xl'>
             <div className='text-center md:text-left'>

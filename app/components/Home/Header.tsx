@@ -1,11 +1,13 @@
-import { auth } from "@/auth";
+"use client";
+
 import { BookOpen, LayoutDashboard } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import CartIcon from "../CartIcon";
 import LogoutButton from "../LogoutButton";
 
-export default async function Header() {
-  const session = await auth();
+export default function Header() {
+  const { data: session } = useSession();
   const isLoggedIn = !!session?.user;
 
   return (

@@ -3,6 +3,8 @@
 import { addToCart } from "@/redux/feature/cart/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { Download, ShoppingCart } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface AddToCartButtonProps {
@@ -23,9 +25,17 @@ export default function AddToCartButton({
   fileUrl,
 }: AddToCartButtonProps) {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const { data: session } = useSession();
   const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
+    // Check if user is authenticated
+    if (!session) {
+      router.push("/login");
+      return;
+    }
+
     dispatch(
       addToCart({
         id,

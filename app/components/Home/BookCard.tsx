@@ -4,7 +4,9 @@ import { addToCart } from "@/redux/feature/cart/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { BookCardProps } from "@/types/book";
 import { Download, ShoppingCart } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function BookCard({
   id,
@@ -15,8 +17,16 @@ export default function BookCard({
   fileUrl,
 }: BookCardProps) {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const { data: session } = useSession();
 
   const handleAddToCart = () => {
+    // Check if user is authenticated
+    if (!session) {
+      router.push("/login");
+      return;
+    }
+
     const priceNumber = parseFloat(price.replace("$", ""));
     dispatch(
       addToCart({
