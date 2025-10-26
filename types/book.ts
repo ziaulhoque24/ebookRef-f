@@ -28,4 +28,5 @@ export interface BookCardProps {
   image: string;
   price: string;
   fileUrl?: string;
+  index?: number;
 }

@@ -2,6 +2,7 @@
 
 import { useGetBooksQuery } from "@/redux/feature/book/bookApi";
 import { Book } from "@/types/book";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import BookCard from "./BookCard";
 
@@ -39,14 +40,20 @@ export default function BooksSection({
   return (
     <section className='py-12 sm:py-16 bg-white'>
       <div className='container mx-auto px-4 sm:px-6'>
-        <div className='text-center mb-8 sm:mb-12'>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className='text-center mb-8 sm:mb-12'
+        >
           <h2 className='text-3xl sm:text-4xl font-bold text-secondary mb-2'>
             CHOOSE YOUR BOOKS
           </h2>
           <p className='text-gray-600 text-sm sm:text-base'>
             Explore our collection of {total} books across all genres.
           </p>
-        </div>
+        </motion.div>
 
         <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8'>
           {books.length === 0 && !isLoading ? (
@@ -54,7 +61,7 @@ export default function BooksSection({
               No books found.
             </p>
           ) : (
-            books.map((book) => (
+            books.map((book, index) => (
               <BookCard
                 key={book.id}
                 id={book.id}
@@ -63,6 +70,7 @@ export default function BooksSection({
                 image={book.coverImage ?? "/books/default.jpg"}
                 price={book.price ? `$${book.price.toFixed(2)}` : "Free"}
                 fileUrl={book.fileUrl}
+                index={index}
               />
             ))
           )}

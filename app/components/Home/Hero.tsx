@@ -1,6 +1,7 @@
 "use client";
 
 import heroImage from "@/app/assets/hero_banner.webp";
+import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,26 +29,44 @@ export default function Hero() {
 
       <div className='relative z-20 container mx-auto px-4 sm:px-6 h-full flex items-center'>
         <div className='max-w-3xl text-white'>
-          <div className='inline-block mb-4 sm:mb-6'>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className='inline-block mb-4 sm:mb-6'
+          >
             <span className='bg-primary text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wide'>
               Ebook Referral Platform
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight'>
+          <motion.h1
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight'
+          >
             Read, Share &
-            <span className='block text-primary mt-2'>
-              Earn Rewards
-            </span>
-          </h1>
+            <span className='block text-primary mt-2'>Earn Rewards</span>
+          </motion.h1>
 
-          <p className='text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-200 leading-relaxed max-w-2xl'>
+          <motion.p
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className='text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-200 leading-relaxed max-w-2xl'
+          >
             Join our community of book lovers. Download premium ebooks and earn
             rewards by referring friends to discover amazing reads.
-          </p>
+          </motion.p>
 
           {!isLoggedIn && (
-            <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4'>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className='flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4'
+            >
               <Link
                 href='/register'
                 className='inline-block text-center bg-primary hover:bg-primary-dark text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1'
@@ -58,10 +77,15 @@ export default function Hero() {
               <span className='text-xs sm:text-sm text-gray-300 text-center sm:text-left'>
                 🎁 Get bonus rewards on signup
               </span>
-            </div>
+            </motion.div>
           )}
 
-          <div className='mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-xl'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className='mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-xl'
+          >
             <div className='text-center md:text-left'>
               <div className='text-2xl sm:text-3xl md:text-4xl font-bold text-primary'>
                 1000+
@@ -86,7 +110,7 @@ export default function Hero() {
                 Rewards
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

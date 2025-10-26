@@ -3,6 +3,7 @@
 import { addToCart } from "@/redux/feature/cart/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { BookCardProps } from "@/types/book";
+import { motion } from "framer-motion";
 import { Download, ShoppingCart } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -15,13 +16,13 @@ export default function BookCard({
   image,
   price,
   fileUrl,
+  index = 0,
 }: BookCardProps) {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { data: session } = useSession();
 
   const handleAddToCart = () => {
-    // Check if user is authenticated
     if (!session) {
       router.push("/login");
       return;
@@ -40,9 +41,18 @@ export default function BookCard({
   };
 
   return (
-    <div className='flex flex-col items-center text-center'>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
+      className='flex flex-col items-center text-center'
+    >
       <Link href={`/books/${id}`} className='mb-3 sm:mb-4 w-full block'>
-        <img
+        <motion.img
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
           src={image}
           alt={title}
           className='w-full h-60 sm:h-[280px] md:h-80 object-cover rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300'
@@ -62,7 +72,9 @@ export default function BookCard({
       </p>
 
       {fileUrl ? (
-        <a
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           href={fileUrl}
           target='_blank'
           rel='noopener noreferrer'
@@ -71,17 +83,19 @@ export default function BookCard({
           <Download className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
           <span className='hidden sm:inline'>Download</span>
           <span className='sm:hidden'>Get</span>
-        </a>
+        </motion.a>
       ) : (
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           className='bg-primary hover:bg-primary-dark text-white font-semibold px-4 sm:px-6 py-1.5 sm:py-2 rounded transition-colors duration-300 w-full max-w-[200px] flex items-center justify-center gap-2 text-sm sm:text-base'
           onClick={handleAddToCart}
         >
           <ShoppingCart className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
           <span className='hidden sm:inline'>Add to Cart</span>
           <span className='sm:hidden'>Add</span>
-        </button>
+        </motion.button>
       )}
-    </div>
+    </motion.div>
   );
 }

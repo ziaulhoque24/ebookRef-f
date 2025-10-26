@@ -2,6 +2,7 @@
 
 import { addToCart } from "@/redux/feature/cart/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import { motion } from "framer-motion";
 import { Download, ShoppingCart } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -30,7 +31,6 @@ export default function AddToCartButton({
   const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
-    // Check if user is authenticated
     if (!session) {
       router.push("/login");
       return;
@@ -49,10 +49,11 @@ export default function AddToCartButton({
     setTimeout(() => setAdded(false), 2000);
   };
 
-  // If fileUrl exists, user has already purchased - show download button
   if (fileUrl) {
     return (
-      <a
+      <motion.a
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         href={fileUrl}
         target='_blank'
         rel='noopener noreferrer'
@@ -60,18 +61,21 @@ export default function AddToCartButton({
       >
         <Download className='w-5 h-5 sm:w-6 sm:h-6' />
         Download Book
-      </a>
+      </motion.a>
     );
   }
 
-  // Otherwise show add to cart button
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      animate={added ? { scale: [1, 1.05, 1] } : {}}
+      transition={{ duration: 0.3 }}
       onClick={handleAddToCart}
       className='w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-base sm:text-lg'
     >
       <ShoppingCart className='w-5 h-5 sm:w-6 sm:h-6' />
       {added ? "Added to Cart!" : "Add to Cart"}
-    </button>
+    </motion.button>
   );
 }
