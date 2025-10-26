@@ -10,7 +10,7 @@ This is the frontend application for the E-book Referral & Credit System. Built 
 
 - **Modern UI/UX**: Responsive design with Tailwind CSS and Framer Motion animations
 - **User Authentication**: NextAuth.js integration with session management
-- **E-book Browsing**: Browse, search, and filter e-books by genre
+- **E-book Browsing**: Browse
 - **Shopping Cart**: Add books to cart with real-time price calculations
 - **Referral Dashboard**: Track referrals, view conversion status, and share referral links
 - **Credit Management**: View earned credits and apply them to purchases
