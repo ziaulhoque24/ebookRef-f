@@ -2,15 +2,15 @@
 
 export default function Loading() {
   return (
-    <div className='fixed inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100 flex items-center justify-center z-50'>
+    <div className='fixed inset-0 bg-linear-to-br from-gray-50 via-white to-gray-100 flex items-center justify-center z-50'>
       <div className='text-center'>
         {/* Animated Book Icon */}
         <div className='relative mb-8'>
           <div className='absolute inset-0 flex items-center justify-center'>
-            <div className='w-24 h-24 rounded-full bg-[var(--primary)] opacity-20 animate-ping'></div>
+            <div className='w-24 h-24 rounded-full bg-primary opacity-20 animate-ping'></div>
           </div>
           <div className='relative flex items-center justify-center'>
-            <div className='w-20 h-20 rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--primary-dark)] flex items-center justify-center shadow-xl animate-bounce'>
+            <div className='w-20 h-20 rounded-full bg-linear-to-br from-primary to-primary-dark flex items-center justify-center shadow-xl animate-bounce'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='40'
@@ -42,15 +42,15 @@ export default function Loading() {
 
         {/* Animated Dots */}
         <div className='flex items-center justify-center gap-2 mt-6'>
-          <div className='w-3 h-3 rounded-full bg-[var(--primary)] animate-bounce [animation-delay:-0.3s]'></div>
-          <div className='w-3 h-3 rounded-full bg-[var(--primary)] animate-bounce [animation-delay:-0.15s]'></div>
-          <div className='w-3 h-3 rounded-full bg-[var(--primary)] animate-bounce'></div>
+          <div className='w-3 h-3 rounded-full bg-primary animate-bounce [animation-delay:-0.3s]'></div>
+          <div className='w-3 h-3 rounded-full bg-primary animate-bounce [animation-delay:-0.15s]'></div>
+          <div className='w-3 h-3 rounded-full bg-primary animate-bounce'></div>
         </div>
 
         {/* Progress Bar */}
         <div className='mt-8 w-64 mx-auto'>
           <div className='h-1 bg-gray-200 rounded-full overflow-hidden'>
-            <div className='h-full bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] rounded-full animate-[shimmer_2s_ease-in-out_infinite]'></div>
+            <div className='h-full bg-linear-to-r from-primary to-primary-dark rounded-full animate-[shimmer_2s_ease-in-out_infinite]'></div>
           </div>
         </div>
       </div>

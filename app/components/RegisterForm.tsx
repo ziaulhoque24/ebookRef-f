@@ -165,8 +165,8 @@ const RegisterForm = () => {
                   name='referralCode'
                   id='referralCode'
                   defaultValue={urlReferralCode || ""}
-                  disabled={!!urlReferralCode}
-                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white disabled:bg-gray-100 disabled:cursor-not-allowed'
+                  readOnly={!!urlReferralCode}
+                  className='w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-800 placeholder:text-gray-400 bg-white read-only:bg-gray-100 read-only:cursor-not-allowed'
                   placeholder='Enter referral code'
                 />
               </div>
