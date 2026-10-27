@@ -35,7 +35,7 @@ export default function RootLayout({
           <ReduxProvider>
             <div className='min-h-screen flex flex-col'>
               <Header />
-              <main className='flex-grow'>{children}</main>
+              <main className='grow'>{children}</main>
               <Footer />
             </div>
           </ReduxProvider>
